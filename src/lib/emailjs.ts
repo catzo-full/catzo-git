@@ -1,7 +1,7 @@
 import emailjs from '@emailjs/browser';
 
 const SERVICE_ID = 'service_2hlxpld';
-const TEMPLATE_ID = 'template_23vidls';
+const TEMPLATE_ID = 'template_jvl4q6d';
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
 const PRIVATE_KEY = '1_RBYI_7HqfYiFHRwp-bJ';
 

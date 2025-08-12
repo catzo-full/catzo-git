@@ -1,20 +1,20 @@
 /*
-  # Create orders table
+  # Create orders table for Catzo Pet Shop
 
   1. New Tables
     - `orders`
       - `id` (uuid, primary key)
       - `user_id` (uuid, foreign key to auth.users)
-      - `customer_name` (text)
-      - `customer_phone` (text)
-      - `customer_email` (text)
-      - `customer_address` (text)
-      - `items` (jsonb)
-      - `total_amount` (decimal)
-      - `payment_method` (text)
-      - `order_date` (text)
-      - `delivery_date` (text)
-      - `status` (text)
+      - `customer_name` (text, customer name)
+      - `customer_phone` (text, customer phone)
+      - `customer_email` (text, customer email)
+      - `customer_address` (text, delivery address)
+      - `items` (jsonb, ordered items)
+      - `total_amount` (numeric, total order amount)
+      - `payment_method` (text, payment method)
+      - `order_date` (text, order date)
+      - `delivery_date` (text, expected delivery date)
+      - `status` (text, order status)
       - `created_at` (timestamp)
       - `updated_at` (timestamp)
 
@@ -22,6 +22,7 @@
     - Enable RLS on `orders` table
     - Add policy for users to read their own orders
     - Add policy for users to create orders
+    - Add policy for users to update their own orders
 */
 
 CREATE TABLE IF NOT EXISTS orders (
@@ -32,11 +33,11 @@ CREATE TABLE IF NOT EXISTS orders (
   customer_email text NOT NULL,
   customer_address text NOT NULL,
   items jsonb NOT NULL,
-  total_amount decimal(10,2) NOT NULL,
-  payment_method text NOT NULL DEFAULT 'cod',
+  total_amount numeric(10,2) NOT NULL,
+  payment_method text DEFAULT 'cod' NOT NULL,
   order_date text NOT NULL,
   delivery_date text NOT NULL,
-  status text NOT NULL DEFAULT 'pending',
+  status text DEFAULT 'pending' NOT NULL,
   created_at timestamptz DEFAULT now(),
   updated_at timestamptz DEFAULT now()
 );

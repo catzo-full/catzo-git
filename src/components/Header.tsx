@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingCart, User, LogOut } from 'lucide-react';
+import { ShoppingCart, User, LogOut, Settings } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import Logo from './Logo';
 
 const Header: React.FC = () => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAdmin } = useAuth();
   const { getTotalItems } = useCart();
   const location = useLocation();
   
@@ -32,20 +32,31 @@ const Header: React.FC = () => {
           </nav>
           
           <div className="flex items-center space-x-4">
-            <Link 
-              to="/cart" 
-              className="relative p-2 text-gray-700 hover:text-orange-600 transition-colors"
-            >
-              <ShoppingCart className="w-6 h-6" />
-              {getTotalItems() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {getTotalItems()}
-                </span>
-              )}
-            </Link>
-            
+            {!isAdmin && (
+              <Link
+                to="/cart"
+                className="relative p-2 text-gray-700 hover:text-orange-600 transition-colors"
+              >
+                <ShoppingCart className="w-6 h-6" />
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </Link>
+            )}
+
             {user && (
               <div className="flex items-center space-x-2">
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    className="p-2 text-gray-700 hover:text-orange-600 transition-colors"
+                    title="Admin Panel"
+                  >
+                    <Settings className="w-5 h-5" />
+                  </Link>
+                )}
                 <User className="w-5 h-5 text-gray-600" />
                 <span className="text-sm text-gray-600 hidden sm:block">
                   {user.email}

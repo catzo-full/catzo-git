@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Plus, Edit2, Trash2, Search, X } from 'lucide-react';
+import { Plus, CreditCard as Edit2, Trash2, Search, X } from 'lucide-react';
 import { Product } from '../../types';
 import { supabase } from '../../lib/supabase';
 import ProductForm from './ProductForm';

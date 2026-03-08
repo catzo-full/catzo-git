@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BarChart3, Package, ShoppingCart, Users, LogOut, Menu, X } from 'lucide-react';
+import { ChartBar as BarChart3, Package, ShoppingCart, Users, LogOut, Menu, X } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import AdminProducts from './admin/AdminProducts';
 import AdminOrders from './admin/AdminOrders';

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, CreditCard, MapPin, Phone, Mail, Search, Filter } from 'lucide-react';
+import { Calendar, CreditCard, MapPin, Phone, Mail, Search, ListFilter as Filter } from 'lucide-react';
 import { Order } from '../../types';
 import { supabase } from '../../lib/supabase';
 
